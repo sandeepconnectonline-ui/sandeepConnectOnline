@@ -1,0 +1,189 @@
+If you mean a simple Google-style HTML test screen, here’s a standalone page you can save as test.html and open in a browser:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Test Screen</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fff;
+      color: #202124;
+    }
+
+    header {
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #4285f4;
+    }
+
+    .logo span:nth-child(2) { color: #ea4335; }
+    .logo span:nth-child(3) { color: #fbbc05; }
+    .logo span:nth-child(4) { color: #4285f4; }
+    .logo span:nth-child(5) { color: #34a853; }
+    .logo span:nth-child(6) { color: #ea4335; }
+
+    .container {
+      max-width: 850px;
+      margin: 50px auto;
+      padding: 0 25px;
+    }
+
+    h1 {
+      font-size: 30px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: #5f6368;
+      margin-bottom: 35px;
+    }
+
+    .question {
+      border: 1px solid #dadce0;
+      border-radius: 10px;
+      padding: 25px;
+      margin-bottom: 20px;
+    }
+
+    .question h2 {
+      font-size: 18px;
+      font-weight: 500;
+      margin-top: 0;
+    }
+
+    label {
+      display: block;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    label:hover {
+      background: #f8f9fa;
+    }
+
+    input[type="radio"] {
+      margin-right: 10px;
+    }
+
+    button {
+      background: #1a73e8;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 12px 25px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1557b0;
+    }
+
+    #result {
+      margin-top: 25px;
+      font-size: 18px;
+      font-weight: 500;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    <span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span>
+  </div>
+  <div>Test Screen</div>
+</header>
+
+<div class="container">
+  <h1>Practice Test</h1>
+  <p class="subtitle">Answer the questions below and submit your test.</p>
+
+  <form id="testForm">
+
+    <div class="question">
+      <h2>1. What does HTML stand for?</h2>
+
+      <label>
+        <input type="radio" name="q1" value="a">
+        Hyper Text Markup Language
+      </label>
+
+      <label>
+        <input type="radio" name="q1" value="b">
+        High Tech Modern Language
+      </label>
+
+      <label>
+        <input type="radio" name="q1" value="c">
+        Hyperlink Text Management Language
+      </label>
+    </div>
+
+    <div class="question">
+      <h2>2. Which language is used to style a webpage?</h2>
+
+      <label>
+        <input type="radio" name="q2" value="a">
+        HTML
+      </label>
+
+      <label>
+        <input type="radio" name="q2" value="b">
+        CSS
+      </label>
+
+      <label>
+        <input type="radio" name="q2" value="c">
+        SQL
+      </label>
+    </div>
+
+    <button type="submit">Submit Test</button>
+
+  </form>
+
+  <div id="result"></div>
+</div>
+
+<script>
+  document.getElementById("testForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    let score = 0;
+
+    if (document.querySelector('input[name="q1"]:checked')?.value === "a") {
+      score++;
+    }
+
+    if (document.querySelector('input[name="q2"]:checked')?.value === "b") {
+      score++;
+    }
+
+    document.getElementById("result").textContent =
+      "Your score: " + score + " / 2";
+  });
+</script>
+
+</body>
+</html>
